@@ -1,20 +1,13 @@
-
-var included = new Array(0)
-var textString = new Array(0)
-var charTotal
-// var arr = new Array(5);
-// var password = textString.toString();
-// for (var i = 0; i < 10; i++) {
-//   var num = Math.floor(Math.random() * 10);
-// }
+var charTotal;
+var included = new Array(0);
+var textString = new Array(0);
+// created character arrays and set conditions, prompts, alerts regarding them //
 function generatePassword() { 
 
 var lowercase = "abcdefghijklmnopqrstuvwxyz".split ("");
 var uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split ("");
 var specChar = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~".split ("");
 var numbers = "1234567890".split ("");
-
-
 
   var input = prompt("Choose Character length... Minimum: 8 / Maximum: 128"); 
   if (input < 8 || input > 128) {
@@ -27,7 +20,7 @@ var numbers = "1234567890".split ("");
     var l = true;
     console.log("Confirm Lowercase acknowledged");
     console.log(l);
-    included.push(lowercase);
+    included.push(...lowercase);
   } 
   else {
     l = false;
@@ -41,7 +34,7 @@ var numbers = "1234567890".split ("");
     var u = true;
     console.log("Confirm Uppercase acknowledged");
     console.log(u);
-    included.push(uppercase);
+    included.push(...uppercase);
   } 
   else {
     u = false;
@@ -54,7 +47,7 @@ var numbers = "1234567890".split ("");
     var n = true;
     console.log("Confirm Numbers acknowledged");
     console.log(n);
-    included.push(numbers);
+    included.push(...numbers);
   } 
   else {
     n = false;
@@ -67,7 +60,7 @@ var numbers = "1234567890".split ("");
     var s = true;
     console.log("Confirm Special acknowledged");
     console.log(s);
-    included.push(specChar);
+    included.push(...specChar);
   } 
   else {
     s = false;
@@ -83,32 +76,30 @@ var numbers = "1234567890".split ("");
   
   console.log(included);
   charTotal = parseInt(input);
-  var password = textString.toString();
-  var random = included[Math.floor(Math.random() * included.length)];
+ // created randomizer to pull from arrays //
+  var i 
 
-    document.getElementById("password").innerHTML;
-    // random.pop();
-    textString.push(random);
-    console.log(random);
+for (i = 0; i < charTotal; i++){
+  var random = included[Math.floor(Math.random() * included.length)];
+  textString.push(random);
+  document.getElementById("password").innerHTML;  
     console.log(textString);
-   
+
+  if (i >= charTotal) return;
+  
+  }
 }
 
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
-// function writePassword() {
-//   var password = generatePassword();
-//   var passwordText = document.querySelector("#password");
- 
-//   passwordText.value = textString;
-  
-  // document.getElementById("password").innerHTML = 
-
-
+function writePassword() {
+  included = [];
+  var password = generatePassword();
+  var passwordText = document.querySelector("#password");
+  passwordText.value = textString.join("");
+}
 // Add event listener to generate button
-  generateBtn.addEventListener("click", generatePassword);
+  generateBtn.addEventListener("click", writePassword);
 
-
- 
